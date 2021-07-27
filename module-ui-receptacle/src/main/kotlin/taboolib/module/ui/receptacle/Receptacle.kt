@@ -13,6 +13,9 @@ open class Receptacle(var type: ReceptacleType, title: String = type.toBukkitTyp
 
     private var viewer: Player? = null
 
+    //自动更新时间 tick
+    private var refreshTime: Long = 0L
+
     private var onOpen: ((player: Player, receptacle: Receptacle) -> Unit) = { _, _ -> }
 
     private var onClose: ((player: Player, receptacle: Receptacle) -> Unit) = { _, _ -> }
@@ -95,6 +98,7 @@ open class Receptacle(var type: ReceptacleType, title: String = type.toBukkitTyp
         initializationPackets()
         player.setViewingReceptacle(this)
         onOpen(player, this)
+        autoRefresh()
     }
 
     fun close(sendPacket: Boolean = true) {
@@ -137,4 +141,18 @@ open class Receptacle(var type: ReceptacleType, title: String = type.toBukkitTyp
             }
         }
     }
+
+    private fun autoRefresh() {
+        if (refreshTime <= 0) {
+            return
+        }
+        submit(delay = refreshTime, async = true) {
+            autoRefresh()
+            if (viewer != null) {
+                setupPlayerInventorySlots()
+            }
+            PacketWindowItems(contents).send(viewer!!)
+        }
+    }
+
 }

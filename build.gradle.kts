@@ -18,7 +18,7 @@ allprojects {
 publishing {
     repositories {
         maven {
-            url = uri("/Users/sky/Desktop/repo")
+            url = uri("D://Development/NewWork")
 //            url = uri("https://repo2s.ptms.ink/repository/maven-public/")
 //            credentials {
 //                username = project.findProperty("user").toString()

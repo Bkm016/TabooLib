@@ -1,11 +1,10 @@
-
 plugins {
     java
     kotlin("jvm") version "1.5.10"
 }
 
 repositories {
-    maven { url = uri("https://repo.codemc.io/repository/maven-public/") }
+    maven { url = uri("https://oss.sonatype.org/content/repositories/snapshots") }
     mavenCentral()
 }
 
