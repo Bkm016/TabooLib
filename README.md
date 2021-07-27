@@ -1,19 +1,2 @@
-# Building
-
-* [Gradle](https://gradle.org/) - Dependency Management
-
-The GradleWrapper in included in this project.
-
-**Windows:**
-
-```
-gradlew.bat clean build
-```
-
-**macOS/Linux:**
-
-```
-./gradlew clean build
-```
-
-Build artifacts should be found in `./build/libs` folder.
+# TabooLib 6.0 开发仓库
+现已合并至 [主仓库](https://github.com/TabooLib/TabooLib), 当前仓库归档。
